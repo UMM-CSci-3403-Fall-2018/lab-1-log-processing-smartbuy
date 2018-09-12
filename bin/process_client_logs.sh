@@ -12,7 +12,7 @@ cat var/log/secure* > temp.txt
 awk '/Failed password for/ { print $0 }' < temp.txt > temp_clean.txt
 
 # Gets date and hour info and name
-sed -r 's/(:+.+)(user )/ /' < temp_clean.txt > temp_date.txt
+sed -r 's/(:+.+)(invalid user )/ /' < temp_clean.txt > temp_date.txt
 
 # Gets IP
 sed -r 's/\s+from+\s/ /' < temp_date.txt > temp_from.txt
@@ -27,4 +27,3 @@ rm temp_clean.txt
 rm temp_date.txt
 rm temp_from.txt
 rm temp_step1.txt
-
