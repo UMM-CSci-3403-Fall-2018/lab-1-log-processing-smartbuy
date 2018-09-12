@@ -16,10 +16,15 @@ sed -r 's/(:+.+)(user )/ /' < temp_clean.txt > temp_date.txt
 
 # Gets IP
 sed -r 's/\s+from+\s/ /' < temp_date.txt > temp_from.txt
-sed -r 's/\s+port+.+//' < temp_from.txt > failed_login_data.txt
+sed -r 's/\s+port+.+//' < temp_from.txt > temp_step1.txt
 
-# Cleanup
+# Remove secondary extra info
+sed -r 's/(:+.+)(for)//' < temp_step1.txt > failed_login_data.txt
+
+# Clean folders
 rm temp.txt
 rm temp_clean.txt
 rm temp_date.txt
 rm temp_from.txt
+rm temp_step1.txt
+
