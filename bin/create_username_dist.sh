@@ -7,7 +7,7 @@ here=$(pwd)
 cd $1
 
 # Sort and count the number of user and output to temp.txt
-awk ' { print $4 } ' < failed_login_data.txt > user.txt
+cat */failed_login_data.txt | awk ' { print $4 } ' > user.txt
 sort user.txt > failed_login_data2.txt
 uniq -c failed_login_data2.txt | awk '{ print "data.addRow([\x27"$2"\x27, "$1"]);" }' > temp.txt
 
