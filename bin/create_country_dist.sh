@@ -22,4 +22,4 @@ sort country.txt > sorted_country.txt
 uniq -c sorted_country.txt | awk '{ print "data.addRow([\x27"$2"\x27, "$1"]);" }' > temp.txt
 
 # Run wrap_contents.sh
-$here/bin/wrap_contents.sh temp.txt $here/html_components/country_dist_header.html $here/html_components/country_dist_footer.html country_dist.html
+$here/bin/wrap_contents.sh temp.txt $here/html_components/country_dist country_dist.html
