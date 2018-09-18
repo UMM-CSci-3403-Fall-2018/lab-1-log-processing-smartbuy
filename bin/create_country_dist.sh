@@ -19,7 +19,7 @@ join sorted_ip.txt $here/etc/country_IP_map.txt | awk ' { print $2 } ' > country
 sort country.txt > sorted_country.txt
 
 # Count country then prep for wrap_contents.sh
-uniq -c sorted_country.txt | awk '{ print "data.addRow([\x27"$2"\x27, "$1"]);" }' > temp.txt
+uniq -c sorted_country.txt | awk '{ print "data.addRow([\x27"$2"\x27, "$1"]);" }' > countrytemp.txt
 
 # Run wrap_contents.sh
-$here/bin/wrap_contents.sh temp.txt $here/html_components/country_dist country_dist.html
+$here/bin/wrap_contents.sh countrytemp.txt $here/html_components/country_dist country_dist.html
