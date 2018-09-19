@@ -7,12 +7,16 @@ here=$(pwd)
 cd $here/log_files
 
 # Loop for extracting contents
-for file in cscirepo_secure.tgz discovery_secure.tgz ganesha_secure.tgz mylar_secure.tgz velcro_secure.tgz zeus_secure.tgz
+for file in $@
 do
-	tempfolder=$(mkdir)
-	tar -xvf $file -C /$tempfolder
+	tempfolder=$(mktemp -d)
+	tar -xvf $file -C $tempfolder
+	
+
 done
 
-
-
 $here/bin/process_client_logs.sh 
+$here/bin/create_username_dist.sh
+$here/bin/create_hours_dist.sh
+$here/bin/create_country_dist.sh
+$here/bin/assemble_report.sh
