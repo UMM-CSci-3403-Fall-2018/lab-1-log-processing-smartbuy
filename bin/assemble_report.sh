@@ -6,8 +6,7 @@ here=$(pwd)
 # Move to temporary directory
 cd $1
 
-# Merge html file to txt
-# We can't do this
+# Merge 3 html file to temp.html
 cat country_dist.html hours_dist.html username_dist.html > temp.html
 
 # Wrap
